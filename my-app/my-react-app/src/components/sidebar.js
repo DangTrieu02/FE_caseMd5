@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export function Sidebar() {
     return (
@@ -9,15 +10,17 @@ export function Sidebar() {
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
-                    <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                    <div class="sidebar-brand-text mx-3">Save Ur oney<sup></sup></div>
                 </a>
 
                 <hr class="sidebar-divider my-0" />
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">
+                    <Link to={"main"}>
+                    <a class="nav-link">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span></a>
+                        </Link>
                 </li>
 
                 <hr class="sidebar-divider" />
@@ -27,11 +30,11 @@ export function Sidebar() {
                 </div>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                        aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Components</span>
-                    </a>
+                <Link to={"main"}>
+                    <a class="nav-link">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Category</span></a>
+                        </Link>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Custom Components:</h6>

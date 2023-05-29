@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
 export function Header() {
-    const [user,setUser]=useState({})
+    const [user, setUser] = useState({})
     return (
         <>
-            <div><nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
@@ -111,8 +111,8 @@ export function Header() {
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
                                     <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                        alt="..."/>
-                                        <div class="status-indicator bg-success"></div>
+                                        alt="..." />
+                                    <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
                                     <div class="text-truncate">Hi there! I am wondering if you can help me with a
@@ -123,8 +123,8 @@ export function Header() {
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
                                     <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                        alt="..."/>
-                                        <div class="status-indicator"></div>
+                                        alt="..." />
+                                    <div class="status-indicator"></div>
                                 </div>
                                 <div>
                                     <div class="text-truncate">I have the photos that you ordered last month, how
@@ -147,8 +147,8 @@ export function Header() {
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
                                     <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                        alt="..."/>
-                                        <div class="status-indicator bg-success"></div>
+                                        alt="..." />
+                                    <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div>
                                     <div class="text-truncate">Am I a good boy? The reason I ask is because someone
@@ -167,7 +167,7 @@ export function Header() {
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                             <img class="img-profile rounded-circle"
-                                src="img/undraw_profile.svg"/>
+                                src="img/undraw_profile.svg" />
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -194,7 +194,7 @@ export function Header() {
 
                 </ul>
 
-            </nav></div>
+            </nav>
         </>
     )
 }
