@@ -1,8 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
+import chartReducer from './chart/chartSlice';
+import walletReducer from '/wallet/walletSlice';
 
 
 const store = configureStore({
-    reducer:{user:{}}
+    reducer:{
+        chartData: chartReducer,
+        wallets: walletReducer
+    }
 })
 export default store
 
