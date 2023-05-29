@@ -44,6 +44,8 @@
   },
   "devDependencies": {
     "chart.js": "^4.3.0",
-    "react-chartjs-2": "^5.2.0"
+    "react-chartjs-2": "^5.2.0",
+    "react-modal": "^3.16.1",
+    "yup": "^1.2.0"
   }
 }
