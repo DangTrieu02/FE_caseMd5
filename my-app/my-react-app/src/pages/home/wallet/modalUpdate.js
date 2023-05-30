@@ -1,8 +1,13 @@
+// show modal thêm ví
+// modal này cho vào trang chính
+// ở trang chính có một button thêm ví, khi nhấn button v setIsShowModal = true => hiển thị modal này
+
 import React from 'react';
 import ModalPopup from 'react-modal'
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import {useDispatch} from "react-redux";
+import './modal.css'
 
 ModalPopup.setAppElement('#root');
 
@@ -27,10 +32,7 @@ export const UpdateModal = ({isOpen, onClose, currentWallet}) =>{
                     }}
                     validationSchema={validationSchema}
                     onSubmit={(values) =>{
-                        dispatch(updateOneWallet(values)).then(()=>{
-
-                            onClose()
-                        })
+                        dispatch(updateOneWallet(values))
                     }}
                 >
                     {({values, setFieldValue})=>(
