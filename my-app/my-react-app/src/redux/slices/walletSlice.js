@@ -21,7 +21,7 @@ const walletSlice= createSlice({
         })
         builder.addCase(removeWallet.fulfilled,(state, action)=>{
             let index = state.list.findIndex((element)=> {
-                return element.id == action.payload;
+                return element.id === action.payload;
               });
             state.list.splice(index);
         })
