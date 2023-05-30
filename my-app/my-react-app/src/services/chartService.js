@@ -24,5 +24,3 @@ export const getWalletsIncomeExpense = createAsyncThunk(
         return response.data
     })
 
-
-
