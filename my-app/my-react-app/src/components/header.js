@@ -1,7 +1,22 @@
+
+
+
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { logout } from '../services/userService';
+import { useSelector } from 'react-redux';
+
 
 export function Header() {
-    const [user, setUser] = useState({})
+    const dispatch = useDispatch()
+    // eslint-disable-next-line no-unused-vars
+    
+    const clearCookie =() =>{
+        dispatch(logout())
+    }
+    const user = useSelector(({user}) => {
+        return user.currentUser
+    })
     return (
         <>
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -165,7 +180,7 @@ export function Header() {
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{user && user.username}</span>
                             <img class="img-profile rounded-circle"
                                 src="img/undraw_profile.svg" />
                         </a>
@@ -185,7 +200,7 @@ export function Header() {
                                 Activity Log
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <a class="dropdown-item" onClick={clearCookie} data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
