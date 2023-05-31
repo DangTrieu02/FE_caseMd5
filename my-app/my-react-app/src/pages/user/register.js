@@ -16,7 +16,7 @@ export default function Register() {
             if(data.payload === "Username already exits"){
                 navigate('/register');
                 MySwal.fire({
-                    // title: <p>Loading...</p>,
+                    title: <p>Loading...</p>,
                     didOpen: () => {
                       MySwal.showLoading()
                     },

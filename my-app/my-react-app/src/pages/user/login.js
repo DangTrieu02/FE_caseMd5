@@ -12,6 +12,7 @@ export default function Login() {
     const navigate = useNavigate();
     const submit = (user) => {
         dispatch(login(user)).then((data) => {
+            console.log(data.payload)
             if(data.payload === 'Username is not exits'|| data.payload ==="Password is wrong" || data.payload === "Username is wrong"){
                 localStorage.clear();
                 navigate('/login');
