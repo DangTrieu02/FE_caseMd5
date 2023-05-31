@@ -24,7 +24,6 @@ export default function Main() {
         return wallets.list
     })
 
-
     useEffect(()=>{
         dispatch(getWalletsIncomeExpense());
         dispatch(getTotalIncomeExpense());
@@ -43,7 +42,7 @@ export default function Main() {
             href="#"
             className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
           >
-            <i className="fas fa-download fa-sm text-white-50" /> Gen erate Report
+            <i className="fas fa-download fa-sm text-white-50" /> Generate Report
           </a>
         </div>
 

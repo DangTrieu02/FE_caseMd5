@@ -1,4 +1,3 @@
-
 import { configureStore } from "@reduxjs/toolkit";
 import chartReducer from './slices/chart/chartSlice';
 import walletReducer from './slices/walletSlice';

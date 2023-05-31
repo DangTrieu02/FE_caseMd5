@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-export function List(wallets) {
+export function List({wallets}) {
     return (
         <>
             <div className="row">
