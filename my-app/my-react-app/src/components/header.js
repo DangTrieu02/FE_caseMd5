@@ -1,13 +1,22 @@
+
+
+
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { logout } from '../services/userService'
+import { logout } from '../services/userService';
+import { useSelector } from 'react-redux';
+
 
 export function Header() {
     const dispatch = useDispatch()
-    const [user, setUser] = useState({})
+    // eslint-disable-next-line no-unused-vars
+    
     const clearCookie =() =>{
         dispatch(logout())
     }
+    const user = useSelector(({user}) => {
+        return user.currentUser
+    })
     return (
         <>
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -171,7 +180,7 @@ export function Header() {
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{user && user.username}</span>
                             <img class="img-profile rounded-circle"
                                 src="img/undraw_profile.svg" />
                         </a>

@@ -9,7 +9,6 @@ export const login = createAsyncThunk(
 
         
     })
-
 export const logout = createAsyncThunk(
         'user/logout',
         async () => {
@@ -17,4 +16,10 @@ export const logout = createAsyncThunk(
             return undefined;
     
             
-        })
+        });
+export const register = createAsyncThunk(
+            'user/register',
+            async (user) => {
+                const res = await axios.post('http://localhost:3001/auth/signup', user);
+                return res.data;
+            })

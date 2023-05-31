@@ -1,8 +1,17 @@
+/* eslint-disable no-undef */
 import {createSlice} from "@reduxjs/toolkit";
-import {login, logout} from "../../services/userService";
+import {login, logout, register} from "../../services/userService";
+
+
 
 const initialState = {
-    currentUser: JSON.parse(localStorage.getItem('user'))
+    currentUser: JSON.parse(localStorage.getItem('user')),
+    currentRegister: {
+        username:'',
+        password:'',
+        image:'',
+        job:''
+    }
 }
 const useSlice = createSlice({
     name: 'user',
@@ -15,6 +24,11 @@ const useSlice = createSlice({
 
         builder.addCase(logout.fulfilled, (state, action) => {
             state.currentUser = action.payload;
+            
+        })
+        builder.addCase(register.fulfilled, (state, action) => {
+            state.currentRegister = action.payload;
+            localStorage.setItem('user', JSON.stringify(action.payload));
             
         })
     }
