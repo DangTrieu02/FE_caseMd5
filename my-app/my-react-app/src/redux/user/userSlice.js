@@ -28,8 +28,6 @@ const useSlice = createSlice({
         })
         builder.addCase(register.fulfilled, (state, action) => {
             state.currentRegister = action.payload;
-            localStorage.setItem('user', JSON.stringify(action.payload));
-            
         })
     }
 })

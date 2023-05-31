@@ -56,7 +56,7 @@ export function MonthlyData(monthlyIncomeExpense) {
 
     return (
             <div style={{ padding: '200px 0 0 200px' }}>
-                <Bar options={options} data={inputData} options={{ responsive: false }} width={600} height={600}/>
+                <Bar options={options} data={inputData} options ={{ responsive: false }} width={600} height={600}/>
             </div>
     )
 
