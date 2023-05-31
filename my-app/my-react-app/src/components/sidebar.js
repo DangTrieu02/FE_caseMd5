@@ -17,7 +17,6 @@ export function Sidebar() {
 
                 <li class="nav-item active">
                     <Link to={"main"}>
-                    // eslint-disable-next-line jsx-a11y/anchor-is-valid
                     <a class="nav-link">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span></a>
@@ -30,8 +29,29 @@ export function Sidebar() {
                     Interface
                 </div>
 
+                <li className="nav-item">
+                    <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                       aria-expanded="true" aria-controls="collapsePages">
+                        <i className="fas fa-fw fa-folder"></i>
+                        <span>Wallet</span>
+                    </a>
+                    <div id="collapsePages" className="collapse" aria-labelledby="headingPages"
+                         data-parent="#accordionSidebar">
+                        <div className="bg-white py-2 collapse-inner rounded">
+                            <h6 className="collapse-header">Login Screens:</h6>
+                            <a className="collapse-item" href="login.html">Login</a>
+                            <a className="collapse-item" href="register.html">Register</a>
+                            <a className="collapse-item" href="forgot-password.html">Forgot Password</a>
+                            <div className="collapse-divider"></div>
+                            <h6 className="collapse-header">Other Pages:</h6>
+                            <a className="collapse-item" href="404.html">404 Page</a>
+                            <a className="collapse-item" href="blank.html">Blank Page</a>
+                        </div>
+                    </div>
+                </li>
+
                 <li class="nav-item">
-                <Link to={"main"}>
+                <Link to={"category"}>
                     <a class="nav-link">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Category</span></a>
@@ -45,11 +65,27 @@ export function Sidebar() {
                     </div>
                 </li>
 
+                <li className="nav-item">
+                    <Link to={"category"}>
+                        <a className="nav-link">
+                            <i className="fas fa-fw fa-tachometer-alt"></i>
+                            <span>Transaction</span></a>
+                    </Link>
+                    <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo"
+                         data-parent="#accordionSidebar">
+                        <div className="bg-white py-2 collapse-inner rounded">
+                            <h6 className="collapse-header">Custom Components:</h6>
+                            <a className="collapse-item" href="buttons.html">Buttons</a>
+                            <a className="collapse-item" href="cards.html">Cards</a>
+                        </div>
+                    </div>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                         aria-expanded="true" aria-controls="collapseUtilities">
                         <i class="fas fa-fw fa-wrench"></i>
-                        <span>Utilities</span>
+                        <span>Create</span>
                     </a>
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                         data-parent="#accordionSidebar">
@@ -66,39 +102,13 @@ export function Sidebar() {
                 <hr class="sidebar-divider" />
 
                 <div class="sidebar-heading">
-                    Addons
+                    Extra
                 </div>
-
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                        aria-expanded="true" aria-controls="collapsePages">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Pages</span>
-                    </a>
-                    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Login Screens:</h6>
-                            <a class="collapse-item" href="login.html">Login</a>
-                            <a class="collapse-item" href="register.html">Register</a>
-                            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                            <div class="collapse-divider"></div>
-                            <h6 class="collapse-header">Other Pages:</h6>
-                            <a class="collapse-item" href="404.html">404 Page</a>
-                            <a class="collapse-item" href="blank.html">Blank Page</a>
-                        </div>
-                    </div>
-                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="charts.html">
                         <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Charts</span></a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="tables.html">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Tables</span></a>
+                        <span>Log Out</span></a>
                 </li>
 
                 <hr class="sidebar-divider d-none d-md-block" />
@@ -112,7 +122,6 @@ export function Sidebar() {
                     <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
                     <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
                 </div>
-
             </ul>
         </>
     )
