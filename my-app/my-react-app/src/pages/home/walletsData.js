@@ -33,9 +33,6 @@ const options = {
 
 
 export function WalletsData({walletsIncomeExpense}) {
-
-
-
     const labels = walletsIncomeExpense.map(item=>item.name);
     const inputData = {
         labels,

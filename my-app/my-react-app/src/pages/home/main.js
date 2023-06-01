@@ -14,6 +14,7 @@ export default function Main() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
     const walletsIncomeExpense = useSelector(({chartData})=>{
+      console.log(chartData , 'aaaaaaaa');
         return chartData.walletsIncomeExpense
     })
 

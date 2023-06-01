@@ -33,7 +33,7 @@ export function List() {
                                     </a>
                                     <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                                         <div class="bg-white py-2 collapse-inner rounded">
-                                            <p class="collapse-item" ><Link to={``}>See more</Link></p>
+                                            <p class="collapse-item" ><Link to={`/home/transaction/${item.id}`}>See more</Link></p>
                                             <p class="collapse-item" ><Link to={`/home/updateWallet/${item.id}`}>update</Link></p>
                                             <p class="collapse-item" onClick={()=> {remove(item.id)}}>delete</p>
                                         </div>
