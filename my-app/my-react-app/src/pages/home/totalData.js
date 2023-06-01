@@ -23,7 +23,8 @@ export function TotalData({totalIncomeExpense}){
 };
 
     return (
-        <div>
+        <>
+        <div style={{paddingLeft: "25%"}}>
             <Doughnut
                     data={inputData}
                     options={{ responsive: false }}
@@ -31,6 +32,7 @@ export function TotalData({totalIncomeExpense}){
                     height={300}
                 />;
         </div>
+        </>
     )
 
 }

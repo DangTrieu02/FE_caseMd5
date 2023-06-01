@@ -7,6 +7,8 @@ import { getMonthlyIncomeExpense, getTotalIncomeExpense, getWalletsIncomeExpense
 import { TotalData } from './totalData';
 import MonthlyData from './monthlyData';
 import { WalletsData } from './walletsData';
+import './home.css'
+import reportWebVitals from './../../reportWebVitals';
 
 export default function Main() {
   const navigate = useNavigate()
@@ -16,12 +18,12 @@ export default function Main() {
     })
 
     const monthlyIncomeExpense = useSelector(({chartData})=>{
-      console.log(chartData.monthlyIncomeExpense,333);
+
         return chartData.monthlyIncomeExpense
     })
 
     const totalIncomeExpense = useSelector(({chartData})=>{
-      console.log(chartData.totalIncomeExpense,'11111')
+
         return chartData.totalIncomeExpense
     })
 
@@ -31,6 +33,7 @@ export default function Main() {
         dispatch(getTotalIncomeExpense());
         dispatch(getMonthlyIncomeExpense());
     }, []);
+
       return (
     <>
       <div className="container-fluid">
@@ -43,15 +46,11 @@ export default function Main() {
           </a>
         </div>
         <div className="row">
-          {monthlyIncomeExpense && <MonthlyData monthlyIncomeExpense={monthlyIncomeExpense} ></MonthlyData>}
-        </div>
-        <div className="row">
-          <div className="col-xl-4 col-lg-7">
-            {totalIncomeExpense && <TotalData totalIncomeExpense={totalIncomeExpense}></TotalData>}
+          <div className="col-xl-8">
+            {/* {totalIncomeExpense && <TotalData totalIncomeExpense={totalIncomeExpense}></TotalData>} */}
+            {monthlyIncomeExpense && <MonthlyData monthlyIncomeExpense={monthlyIncomeExpense} id="monthly-data"></MonthlyData>}
           </div>
-          <div className="col-xl-4 col-lg-7">
-           {walletsIncomeExpense && <WalletsData walletsIncomeExpense={walletsIncomeExpense}></WalletsData>}
-          </div>
+          {/*  */}
           <div className="col-xl-4 col-lg-5">
             <div className="card shadow mb-4">
               <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -104,6 +103,14 @@ export default function Main() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div className='row mt-5'>
+        <div className="col-xl-6">
+            {totalIncomeExpense && <TotalData totalIncomeExpense={totalIncomeExpense}></TotalData>}
+          </div>
+          <div className="col-xl-6">
+            {walletsIncomeExpense && <WalletsData walletsIncomeExpense={walletsIncomeExpense}></WalletsData>}
           </div>
         </div>
         <center><h3>All Wallet</h3></center>

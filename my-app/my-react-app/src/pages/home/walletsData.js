@@ -54,8 +54,8 @@ export function WalletsData({walletsIncomeExpense}) {
     };
 
     return (
-        <div style={{ padding: '200px 0 0 200px' }}>
-            <Bar options={options} data={inputData} options={{ responsive: false }} width={600} height={600}/>
+        <div style={{ paddingLeft: '20%', width: "100%", height: "100%" }}>
+            <Bar options={options} data={inputData} options={{ responsive: false }} width={300} height={300}/>
         </div>
     )
 

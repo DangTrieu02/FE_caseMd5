@@ -54,8 +54,8 @@ export default function MonthlyData({monthlyIncomeExpense}) {
 
 
     return (
-            <div style={{ padding: '200px 0 0 200px' }}>
-                <Bar options={options} data={inputData} width={600} height={600}/>
+            <div style={{ padding: '0px 0 200 0px', width:"100%",height:"100%"}}>
+                <Bar options={options} data={inputData} />
             </div>
     )
 
