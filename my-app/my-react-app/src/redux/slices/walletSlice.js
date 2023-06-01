@@ -15,16 +15,16 @@ const walletSlice= createSlice({
         builder.addCase(getOneWallet.fulfilled,(state, action)=>{
             state.list.push(action.payload);
         })
-        builder.addCase(updateWallet.fulfilled,(state, action)=>{
+        // builder.addCase(updateWallet.fulfilled,(state, action)=>{
 
-            state.list.push(action.payload);
-        })
-        builder.addCase(removeWallet.fulfilled,(state, action)=>{
-            let index = state.list.findIndex((element)=> {
-                return element.id === action.payload;
-              });
-            state.list.splice(index);
-        })
+        //     state.list.push(action.payload);
+        // })
+        // builder.addCase(removeWallet.fulfilled,(state, action)=>{
+        //     let index = state.list.findIndex((element)=> {
+        //         return element.id === action.payload;
+        //       });
+        //     state.list.splice(index);
+        // })
         builder.addCase(addWallet.fulfilled,(state, action)=>{
             state.list.push(action.payload);
         })

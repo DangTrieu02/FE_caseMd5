@@ -4,7 +4,7 @@ import { getAllCategory,getOneCategory,addCategory,updateCategory, removeCategor
 const initialState={
     list:[]
 }
-const walletSlice= createSlice({
+const categorySlice = createSlice({
     name: 'students',
     initialState,
     extraReducers:builder =>{
@@ -25,3 +25,5 @@ const walletSlice= createSlice({
         })
     }
 })
+
+export default categorySlice.reducer

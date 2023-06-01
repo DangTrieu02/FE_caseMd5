@@ -1,18 +1,12 @@
-// eslint-disable-next-line no-unused-vars
-import logo from './logo.svg';
-import './App.css';
-// eslint-disable-next-line no-unused-vars
-import { Header } from './components/header';
-// eslint-disable-next-line no-unused-vars
-import { Sidebar } from './components/sidebar';
+
 import { Route, Routes, Navigate} from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import Home from './pages/home';
-import Main from './pages/main';
+import Home from './pages/home/home';
+import Main from './pages/home/main';
 import Login from './pages/user/login'
 import Register from './pages/user/register'
-import { Create } from './pages/home/wallet/add';
-import Update from './pages/home/wallet/update';
+import { Create } from './pages/home/add';
+import Update from './pages/wallet/update';
 
 
 function App() {

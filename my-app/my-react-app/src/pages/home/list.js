@@ -1,18 +1,20 @@
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { removeWallet } from "../services/walletService";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { getAllWallet, removeWallet } from "../services/walletService";
+import { useEffect } from "react";
 
 
-
-
-
-export function List(props) {
-    const wallets = props.wallets
-    const navigate = useNavigate()
+export function List() {
+    const wallets = useSelector(({wallets})=>{
+          return wallets.list
+      })
     const dispatch = useDispatch()
     const remove = (id) => {
         dispatch(removeWallet(id))
     }
+    useEffect(()=>{
+        dispatch(getAllWallet())
+    }, []);
 
     return (
         <>

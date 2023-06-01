@@ -1,6 +1,6 @@
-import { Header } from "../components/header";
+import { Header } from "../../components/header";
 import { Outlet } from "react-router-dom";
-import { Sidebar } from "../components/sidebar";
+import { Sidebar } from "../../components/sidebar";
 
 export default function Home() {
     return (
@@ -16,7 +16,7 @@ export default function Home() {
                     <footer class="sticky-footer bg-white">
                         <div class="container my-auto">
                             <div class="copyright text-center my-auto">
-                                <span>Khum Copyright © Your Website 2023</span>
+                                <span>Khum Copyright © Your Website 2020</span>
                             </div>
                         </div>
                     </footer>

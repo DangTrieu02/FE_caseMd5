@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Main() {
   const navigate = useNavigate()
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
     const walletsIncomeExpense = useSelector(({chartData})=>{
         return chartData.walletsIncomeExpense
     })
@@ -19,18 +19,15 @@ export default function Main() {
     })
 
     const totalIncomeExpense = useSelector(({chartData})=>{
+      console.log(chartData.totalIncomeExpense,'11111')
         return chartData.totalIncomeExpense
     })
 
-    const wallets = useSelector(({wallets})=>{
-        return wallets.list
-    })
+   
     useEffect(()=>{
-        dispatch(getWalletsIncomeExpense());
+        // dispatch(getWalletsIncomeExpense());
         dispatch(getTotalIncomeExpense());
-        dispatch(getMonthlyIncomeExpense());
-        dispatch(getWalletsIncomeExpense());
-        dispatch(getAllWallet())
+        // dispatch(getMonthlyIncomeExpense());
     }, []);
       return (
     <>
@@ -206,9 +203,9 @@ export default function Main() {
             </div>
           </div>
         </div>
-    <center><h3>All Wallet</h3></center>
+        <center><h3>All Wallet</h3></center>
         <div className="row">
-        <List wallets={wallets}></List>
+        <List></List>
         </div>
       </div>
     </>

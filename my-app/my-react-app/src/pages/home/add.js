@@ -2,7 +2,7 @@ import {ErrorMessage, Field, Form, Formik, FormikProvider, useFormik} from "form
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import * as Yup from 'yup';
-import './add.css'
+import './addCss.css'
 import { addWallet } from "../../../services/walletService";
 
 const SchemaError = Yup.object().shape({
@@ -75,9 +75,3 @@ export function Create() {
         </FormikProvider>
     );
 }
-
-//Dán vào file index.html
-// <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-//     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-//     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-//     <link href="democss.css" rel="stylesheet">

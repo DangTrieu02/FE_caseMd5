@@ -4,7 +4,8 @@ import customAPI from "./customAPI";
 export const getTotalIncomeExpense = createAsyncThunk(
     'chart/getTotalIncomeExpense',
     async() =>{
-        let response = await customAPI.get('transaction/income-expenditure-comparison/total')
+        let response = await customAPI.get('home/income-expenditure-comparison/total')
+        console.log(response.data,222);
         return response.data
     })
 

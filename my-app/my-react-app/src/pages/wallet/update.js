@@ -4,28 +4,27 @@ import { useDispatch, useSelector } from "react-redux";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { useEffect, useState } from "react";
-import { getOneWallet, updateWallet } from "../../../services/walletService";
+import { getOneWallet, updateWallet } from "../../services/walletService";
 import axios from "axios";
 
 
 export default function Update() {
-    const MySwal = withReactContent(Swal)
+    // const MySwal = withReactContent(Swal)
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { id } = useParams()
-    const [wallet, setWallet] = useState([])
-
+    const selector = useSelector(({wallets})=>{
+        console.log(wallets,"i")
+        return wallets
+    })
     useEffect(() => {
-        axios.get(`http://localhost:3001/wallet/one?id=${id}`).then((res) => {
-            setWallet(res.data);
-        })
+      dispatch(getOneWallet(id))
     }, [])
 
-    const submit = async (values) => {
-        await dispatch(updateWallet(id,values))
-        await navigate('/home/main')
+    const submit =  (values) => {
+        // await dispatch(updateWallet(id,values))
+        // await navigate('/home/main')
     }
-    console.log(wallet)
     return (
         <>
 
@@ -44,8 +43,8 @@ export default function Update() {
                                             </div>
                                             <Formik
                                                initialValues={{
-                                                name: wallet.name ,
-                                                total: wallet.total
+                                                name:'' ,
+                                                total: ''
                                               }}
                                                 onSubmit={values => {
                                                     submit(values);

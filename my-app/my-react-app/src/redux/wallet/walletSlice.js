@@ -14,16 +14,17 @@ const initialState = {
     currentWallet: {}
 }
 
-const walletSlice = createSlice(
-    {
+const walletSlice = createSlice({
         name: 'wallets',
         initialState,
         reducers: {},
         extraReducers: builder =>{
             builder.addCase(getAllWallet.fulfilled,(state, action)=>{
+                console.log(action.payload)
                 state.list = action.payload;
             })
             builder.addCase(getOneWallet.fulfilled,(state, action)=>{
+                console.log(1111111111)
                 state.currentWallet = action.payload;
             })
             builder.addCase(updateWallet.fulfilled,(state, action)=>{
@@ -48,7 +49,7 @@ const walletSlice = createSlice(
                 initialState.list.splice(index,1)
             })
             builder.addCase(addWallet.fulfilled,(state, action)=>{
-                console.log(state);
+                console.log(12322323232);
                 state.list.push(action.payload);
             })
             builder.addCase(getWalletIncomeExpense.fulfilled, (currentState, action)=>{
