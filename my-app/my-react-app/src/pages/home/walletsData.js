@@ -32,7 +32,7 @@ const options = {
 };
 
 
-export function WalletsData(walletsIncomeExpense) {
+export function WalletsData({walletsIncomeExpense}) {
 
 
 

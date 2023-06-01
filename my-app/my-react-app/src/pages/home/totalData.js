@@ -1,7 +1,7 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
-export function TotalData(totalIncomeExpense){
+export function TotalData({totalIncomeExpense}){
 
     const inputData = {
     labels: ['Total income', 'Total expense'],

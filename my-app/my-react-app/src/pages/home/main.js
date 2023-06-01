@@ -3,7 +3,10 @@ import { Button, Modal } from 'react-bootstrap';
 import {useDispatch, useSelector} from "react-redux";
 import { List } from './list';
 import { useNavigate } from 'react-router-dom';
-import { getTotalIncomeExpense, getWalletsIncomeExpense } from './../../services/chartService';
+import { getMonthlyIncomeExpense, getTotalIncomeExpense, getWalletsIncomeExpense } from './../../services/chartService';
+import { TotalData } from './totalData';
+import MonthlyData from './monthlyData';
+import { WalletsData } from './walletsData';
 
 export default function Main() {
   const navigate = useNavigate()
@@ -13,6 +16,7 @@ export default function Main() {
     })
 
     const monthlyIncomeExpense = useSelector(({chartData})=>{
+      console.log(chartData.monthlyIncomeExpense,333);
         return chartData.monthlyIncomeExpense
     })
 
@@ -23,9 +27,9 @@ export default function Main() {
 
    
     useEffect(()=>{
-        // dispatch(getWalletsIncomeExpense());
+        dispatch(getWalletsIncomeExpense());
         dispatch(getTotalIncomeExpense());
-        // dispatch(getMonthlyIncomeExpense());
+        dispatch(getMonthlyIncomeExpense());
     }, []);
       return (
     <>
@@ -39,113 +43,14 @@ export default function Main() {
           </a>
         </div>
         <div className="row">
-          <div className="col-xl-12 col-md-6 mb-4">
-            <div className="card border-left-primary shadow h-100 py-2">
-              <div className="card-body">
-                <div className="row no-gutters align-items-center">
-                  <div className="col mr-2">
-                    <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                      Wallet :
-                    </div>
-                    <div className="h5 mb-0 font-weight-bold text-gray-800">
-                      Total :  $40,000
-                    </div>
-                  </div>
-                  <div className="col-auto">
-                    <i class="fa fa-credit-card" aria-hidden="true"></i>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {monthlyIncomeExpense && <MonthlyData monthlyIncomeExpense={monthlyIncomeExpense} ></MonthlyData>}
         </div>
         <div className="row">
           <div className="col-xl-4 col-lg-7">
-            <div className="card shadow mb-4">
-              <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 className="m-0 font-weight-bold text-primary">
-                  Chart
-                </h6>
-                <div className="dropdown no-arrow">
-                  <a
-                    className="dropdown-toggle"
-                    href="#"
-                    role="button"
-                    id="dropdownMenuLink"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <i className="fas fa-ellipsis-v fa-sm fa-fw text-gray-400" />
-                  </a>
-                  <div
-                    className="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                    aria-labelledby="dropdownMenuLink"
-                  >
-                    <div className="dropdown-header">Dropdown Header:</div>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                    <div className="dropdown-divider" />
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="card-body">
-                <div className="chart-area">
-                  <canvas id="myAreaChart" />
-                </div>
-              </div>
-            </div>
+            {totalIncomeExpense && <TotalData totalIncomeExpense={totalIncomeExpense}></TotalData>}
           </div>
           <div className="col-xl-4 col-lg-7">
-            <div className="card shadow mb-4">
-              <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 className="m-0 font-weight-bold text-primary">
-                  Chart
-                </h6>
-                <div className="dropdown no-arrow">
-                  <a
-                    className="dropdown-toggle"
-                    href="#"
-                    role="button"
-                    id="dropdownMenuLink"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <i className="fas fa-ellipsis-v fa-sm fa-fw text-gray-400" />
-                  </a>
-                  <div
-                    className="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                    aria-labelledby="dropdownMenuLink"
-                  >
-                    <div className="dropdown-header">Dropdown Header:</div>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                    <div className="dropdown-divider" />
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="card-body">
-                <div className="chart-area">
-                  <canvas id="myAreaChart" />
-                </div>
-              </div>
-            </div>
+           {walletsIncomeExpense && <WalletsData walletsIncomeExpense={walletsIncomeExpense}></WalletsData>}
           </div>
           <div className="col-xl-4 col-lg-5">
             <div className="card shadow mb-4">

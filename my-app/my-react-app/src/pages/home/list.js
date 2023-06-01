@@ -13,6 +13,7 @@ export function List() {
         dispatch(removeWallet(id))
     }
     useEffect(()=>{
+        
         dispatch(getAllWallet())
     }, []);
 
