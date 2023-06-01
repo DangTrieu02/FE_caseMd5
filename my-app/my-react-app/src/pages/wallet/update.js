@@ -9,21 +9,20 @@ import axios from "axios";
 
 
 export default function Update() {
-    // const MySwal = withReactContent(Swal)
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { id } = useParams()
-    const selector = useSelector(({wallets})=>{
-        console.log(wallets,"i")
-        return wallets
+    const wallet = useSelector(({wallets})=>{
+        return wallets.currentWallet
     })
     useEffect(() => {
       dispatch(getOneWallet(id))
     }, [])
 
-    const submit =  (values) => {
-        // await dispatch(updateWallet(id,values))
-        // await navigate('/home/main')
+    const submit = (values) => {
+        console.log(values)
+        dispatch(updateWallet({id,values}))
+        navigate('/home/main')
     }
     return (
         <>
@@ -42,13 +41,11 @@ export default function Update() {
                                                 <h1 className="h4 text-gray-900 mb-4"></h1>
                                             </div>
                                             <Formik
-                                               initialValues={{
-                                                name:'' ,
-                                                total: ''
-                                              }}
+                                               initialValues={wallet}
                                                 onSubmit={values => {
                                                     submit(values);
                                                 }}
+                                                enableReinitialize={true} 
                                             >
                                                 <Form>
                                                     <div className="user">
@@ -63,7 +60,7 @@ export default function Update() {
                                                         </div>
                                                         <div className="form-group">
                                                             <Field
-                                                                type="password"
+                                                                type="number"
                                                                 placeholder="total"
                                                                 name="total"
                                                                 className="form-control form-control-user"
@@ -79,7 +76,6 @@ export default function Update() {
                                                     <hr />
                                                 </Form>
                                             </Formik>
-
                                         </div>
                                     </div>
                                 </div>

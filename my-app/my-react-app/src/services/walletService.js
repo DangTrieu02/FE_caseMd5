@@ -43,9 +43,9 @@ export const removeWallet = createAsyncThunk(
 
 export const updateWallet = createAsyncThunk(
     'wallets/updateWallet',
-    async (id, newWallet) => {
-        await customAPI().put(`wallet?id=${id}`, newWallet)
-        return { id: id, newWallet: newWallet }
+    async (data) => {
+        await customAPI().put(`wallet?id=${data.id}`, data.values)
+        return { id: data.id, newWallet: data.values}
     }
 )
 export const getWalletIncomeExpense = createAsyncThunk(

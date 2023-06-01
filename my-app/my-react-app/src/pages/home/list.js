@@ -13,7 +13,6 @@ export function List() {
         dispatch(removeWallet(id))
     }
     useEffect(()=>{
-        
         dispatch(getAllWallet())
     }, []);
 
@@ -34,9 +33,9 @@ export function List() {
                                     </a>
                                     <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                                         <div class="bg-white py-2 collapse-inner rounded">
-                                            <p class="collapse-item" >See more</p>
+                                            <p class="collapse-item" ><Link to={``}>See more</Link></p>
                                             <p class="collapse-item" ><Link to={`/home/updateWallet/${item.id}`}>update</Link></p>
-                                            <p class="collapse-item" onClick={()=> remove(item.id) }>delete</p>
+                                            <p class="collapse-item" onClick={()=> {remove(item.id)}}>delete</p>
                                         </div>
                                     </div>
                                     <div className="h5 mb-0 font-weight-bold text-gray-800">${item.total}</div>

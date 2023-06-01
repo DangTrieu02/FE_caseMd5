@@ -7,6 +7,7 @@ import Login from './pages/user/login'
 import Register from './pages/user/register'
 import { Create } from './pages/home/add';
 import Update from './pages/wallet/update';
+import Transaction from './pages/transaction/transaction';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                               <Route path={'main'} element={<Main/>}/>
                               <Route path={'addWallet'} element={<Create/>}/>
                               <Route path={'updateWallet/:id'} element={<Update/>}/>
+                              <Route path={'transaction/:id'} element={<Transaction/>}/>
                             </Route>
                             <Route path={"*"} element={<Navigate to={'home'}/>}/>
                         </>

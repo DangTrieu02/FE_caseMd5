@@ -13,15 +13,12 @@ const chartSlice = createSlice(
         reducers: {},
         extraReducers: builder => {
             builder.addCase(getTotalIncomeExpense.fulfilled, (currentState, action)=>{
-                console.log(action.payload)
                 currentState.totalIncomeExpense = action.payload
             })
             builder.addCase(getMonthlyIncomeExpense.fulfilled, (currentState, action)=>{
-                console.log(action.payload)
                 currentState.monthlyIncomeExpense = action.payload
             })
             builder.addCase(getWalletsIncomeExpense.fulfilled, (currentState, action)=>{
-                console.log(action.payload)
                 currentState.walletsIncomeExpense = action.payload
             })
         }

@@ -42,12 +42,12 @@ export function WalletsData({walletsIncomeExpense}) {
         datasets: [
             {
                 label: 'Income',
-                data: walletsIncomeExpense.map((item) => item.totalIncome),
+                data: walletsIncomeExpense.map((item) => item.income),
                 backgroundColor:  'rgba(255, 206, 86, 0.5)',
             },
             {
                 label: 'Expense',
-                data: walletsIncomeExpense.map((item) => item.totalExpense),
+                data: walletsIncomeExpense.map((item) => item.expense),
                 backgroundColor: 'rgba(75, 192, 192, 0.5)',
             },
         ],
