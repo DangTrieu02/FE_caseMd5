@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import * as Yup from 'yup';
 import './addCss.css'
-import { addWallet } from "../../../services/walletService";
+import { addWallet } from "../../services/walletService";
 
 const SchemaError = Yup.object().shape({
     name: Yup.string()

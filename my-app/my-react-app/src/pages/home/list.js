@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getAllWallet, removeWallet } from "../services/walletService";
 import { useEffect } from "react";
+import { getAllWallet, removeWallet } from "../../services/walletService";
 
 
 export function List() {

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap';
 import {useDispatch, useSelector} from "react-redux";
-import { getMonthlyIncomeExpense, getTotalIncomeExpense, getWalletsIncomeExpense } from '../services/chartService';
-import { getAllWallet } from '../services/walletService';
 import { List } from './list';
-import { Create } from './home/wallet/add';
 import { useNavigate } from 'react-router-dom';
+import { getTotalIncomeExpense, getWalletsIncomeExpense } from './../../services/chartService';
 
 export default function Main() {
   const navigate = useNavigate()
