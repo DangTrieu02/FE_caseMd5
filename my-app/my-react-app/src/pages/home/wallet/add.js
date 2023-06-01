@@ -1,8 +1,9 @@
-import {ErrorMessage, Field, Form, FormikProvider, useFormik} from "formik";
+import {ErrorMessage, Field, Form, Formik, FormikProvider, useFormik} from "formik";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import * as Yup from 'yup';
 import './add.css'
+import { addWallet } from "../../../services/walletService";
 
 const SchemaError = Yup.object().shape({
     name: Yup.string()
@@ -24,8 +25,12 @@ export function Create() {
         },
         validationSchema: SchemaError,
         onSubmit: (values) => {
-            console.log(values)
-            dispatch(addWallet(values).then(() => {navigate('/home/list')}))}})
+            dispatch(addWallet(values))
+            .then(() => {
+              navigate('/home/main');
+            })
+        }  
+        })
     return (
         <FormikProvider value={formik}>
             <Form>
@@ -49,7 +54,7 @@ export function Create() {
                                                 <p style={{ color: 'red' }}><ErrorMessage name="name" /></p>
                                             </div>
                                             <div className="form-group">
-                                                <Field type="number" className="form-control" placeholder="Total money *" name='total'/>
+                                                <Field type="number" className="form-control" placeholder="Total money *" name='total' min={0} />
                                                 <p style={{ color: 'red' }}><ErrorMessage name="total" /></p>
                                             </div>
                                             <button type="submit" className="btnRegister">ADD</button>

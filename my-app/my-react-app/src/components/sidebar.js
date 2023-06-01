@@ -17,7 +17,6 @@ export function Sidebar() {
 
                 <li class="nav-item active">
                     <Link to={"main"}>
-                    // eslint-disable-next-line jsx-a11y/anchor-is-valid
                     <a class="nav-link">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span></a>
@@ -31,7 +30,7 @@ export function Sidebar() {
                 </div>
 
                 <li class="nav-item">
-                <Link to={"main"}>
+                <Link to={""}>
                     <a class="nav-link">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Category</span></a>

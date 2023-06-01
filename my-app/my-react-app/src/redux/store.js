@@ -6,7 +6,6 @@ import {configureStore} from '@reduxjs/toolkit'
 
 const store = configureStore({
     reducer:{
-        
         user: userReducer,
         chartData: chartReducer,
         wallets: walletReducer

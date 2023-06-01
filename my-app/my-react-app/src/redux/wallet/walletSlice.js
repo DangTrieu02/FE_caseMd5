@@ -44,10 +44,11 @@ const walletSlice = createSlice(
                     if(state.list[i].id === id){
                         index = i;
                     }
-                }
-                currentState.list.splice(index,1)
+                }       
+                initialState.list.splice(index,1)
             })
             builder.addCase(addWallet.fulfilled,(state, action)=>{
+                console.log(state);
                 state.list.push(action.payload);
             })
             builder.addCase(getWalletIncomeExpense.fulfilled, (currentState, action)=>{

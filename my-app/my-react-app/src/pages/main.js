@@ -4,8 +4,11 @@ import {useDispatch, useSelector} from "react-redux";
 import { getMonthlyIncomeExpense, getTotalIncomeExpense, getWalletsIncomeExpense } from '../services/chartService';
 import { getAllWallet } from '../services/walletService';
 import { List } from './list';
+import { Create } from './home/wallet/add';
+import { useNavigate } from 'react-router-dom';
 
 export default function Main() {
+  const navigate = useNavigate()
   const dispatch = useDispatch();
     const walletsIncomeExpense = useSelector(({chartData})=>{
         return chartData.walletsIncomeExpense
@@ -20,34 +23,26 @@ export default function Main() {
     })
 
     const wallets = useSelector(({wallets})=>{
-      console.log(wallets)
         return wallets.list
     })
-
     useEffect(()=>{
         dispatch(getWalletsIncomeExpense());
         dispatch(getTotalIncomeExpense());
         dispatch(getMonthlyIncomeExpense());
         dispatch(getWalletsIncomeExpense());
         dispatch(getAllWallet())
-    }, [])
-
-
-  return (
+    }, []);
+      return (
     <>
       <div className="container-fluid">
         <div className="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
-          <a
-            href="#"
-            className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-          >
-            <i className="fas fa-download fa-sm text-white-50" /> Generate Report
+          <a className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" onClick={()=>{
+            navigate("/home/addWallet")
+          }}>
+            <i className="fas fa-download fa-sm text-white-50" /> Create a new Wallet
           </a>
         </div>
-
-        <List wallets={wallets.list}></List>
-
         <div className="row">
           <div className="col-xl-12 col-md-6 mb-4">
             <div className="card border-left-primary shadow h-100 py-2">
@@ -70,7 +65,6 @@ export default function Main() {
             </div>
           </div>
         </div>
-
         <div className="row">
           <div className="col-xl-4 col-lg-7">
             <div className="card shadow mb-4">
@@ -212,33 +206,11 @@ export default function Main() {
             </div>
           </div>
         </div>
-
+    <center><h3>All Wallet</h3></center>
         <div className="row">
-
-          <div className="col-xl-3 col-md-6 mb-4">
-            <div className="card border-left-primary shadow h-100 py-2">
-              <div className="card-body">
-                <div className="row no-gutters align-items-center">
-                  <div className="col mr-2">
-                    <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                      Wallet :
-                    </div>
-                    <div className="h5 mb-0 font-weight-bold text-gray-800">
-                      Total :  $40,000
-                    </div>
-                  </div>
-                  <div className="col-auto">
-                    <i class="fa fa-credit-card" aria-hidden="true"></i>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <List wallets={wallets}></List>
         </div>
-
       </div>
-
     </>
   )
 }
