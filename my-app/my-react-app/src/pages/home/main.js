@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Modal } from 'react-bootstrap';
+import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import { List } from './list';
 import { useNavigate } from 'react-router-dom';
@@ -8,13 +7,11 @@ import { TotalData } from './totalData';
 import MonthlyData from './monthlyData';
 import { WalletsData } from './walletsData';
 import './home.css'
-import reportWebVitals from './../../reportWebVitals';
 
 export default function Main() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
     const walletsIncomeExpense = useSelector(({chartData})=>{
-      console.log(chartData , 'aaaaaaaa');
         return chartData.walletsIncomeExpense
     })
 
