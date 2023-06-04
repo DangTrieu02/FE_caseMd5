@@ -8,17 +8,24 @@ import Register from './pages/user/register'
 import { Create } from './pages/home/add';
 import Update from './pages/wallet/update';
 import Transaction from './pages/transaction/transaction';
+import {LoginSuccess} from "./containers/loginSuccess";
+import {LoginError} from "./containers/loginError";
 
 
 function App() {
   let user = useSelector(({user}) => {
     return user.currentUser;
 })
+
+
+
   return (
     <>
     <Routes>
     <Route path={'login'} element={<Login/>}/>
     <Route path={'register'} element={<Register/>}/>
+    <Route path={'auth/login/success'} element={<LoginSuccess/>}/>
+    <Route path={'auth/login/error'} element={<LoginError/>}/>
                 {
                     user ?
                         <>

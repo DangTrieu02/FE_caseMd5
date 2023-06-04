@@ -1,15 +1,63 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Form, Formik, Field } from "formik";
+import {Form, Formik, Field, setIn} from "formik";
 import { useDispatch } from "react-redux";
-import { login } from "../../services/userService";
+import {googleLogin, login} from "../../services/userService";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import axios from "axios";
+import {useState} from "react";
 
 
 export default function Login() {
     const MySwal = withReactContent(Swal)
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+
+
+    // const fetchAuthUser = async () => {
+    //     const response = await axios
+    //         .get("http://localhost:5000/api/v1/auth/user", { withCredentials: true })
+    //         .catch((err) => {
+    //             console.log("Not properly authenticated");
+    //             dispatch(setIsAuthenticated(false));
+    //             dispatch(setAuthUser(null));
+    //             history.push("/login/error");
+    //         });
+    //
+    //     if (response && response.data) {
+    //         console.log("User: ", response.data);
+    //         dispatch(setIsAuthenticated(true));
+    //         dispatch(setAuthUser(response.data));
+    //         history.push("/welcome");
+    //     }
+    // };
+
+
+    // const redirectToGoogleSSO = async () => {
+    //     let timer: NodeJS.Timeout | null = null;
+    //     const googleLoginURL = "http://localhost:3001/auth/google";
+    //     const newWindow = window.open(
+    //         googleLoginURL,
+    //         "_blank",
+    //         "width=500,height=600"
+    //     );
+    //     if (newWindow) {
+    //         timer = setInterval(() => {
+    //             if (newWindow.closed) {
+    //                 console.log("Yay we're authenticated");
+    //                 // fetchAuthUser();
+    //                 if (timer) clearInterval(timer);
+    //             }
+    //         }, 500);
+    //     }
+    // };
+
+
+
+
+
+
 
     const submit = (user) => {
         dispatch(login(user)).then((data) => {
@@ -29,6 +77,15 @@ export default function Login() {
             }
         });
     }
+
+
+    const googleAuth = () => {
+        window.open(
+            `http://localhost:3001/auth/google`,
+            "_self"
+        );
+    };
+
     return (
         <>
 <center><h3>Login</h3></center>
@@ -68,9 +125,9 @@ export default function Login() {
                                                     </div>
                                                     <button className="btn btn-primary btn-user btn-block" type={'submit'}>Login</button>
                                                     <hr />
-                                                    <a href="index.html" className="btn btn-google btn-user btn-block">
+                                                    <button className="btn btn-google btn-user btn-block" onClick={() => googleAuth()}>
                                                         <i className="fab fa-google fa-fw"></i> Login with Google
-                                                    </a>
+                                                    </button>
                                                     <a href="index.html" className="btn btn-facebook btn-user btn-block">
                                                         <i className="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                                     </a>

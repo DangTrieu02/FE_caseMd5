@@ -2,7 +2,11 @@ import { Header } from "../../components/header";
 import { Outlet } from "react-router-dom";
 import { Sidebar } from "../../components/sidebar";
 
+
 export default function Home() {
+
+
+
     return (
         <>
             <div id="wrapper">

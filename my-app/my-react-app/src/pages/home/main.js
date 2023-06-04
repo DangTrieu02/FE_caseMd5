@@ -25,6 +25,9 @@ export default function Main() {
         return chartData.totalIncomeExpense
     })
 
+
+
+
    
     useEffect(()=>{
         dispatch(getWalletsIncomeExpense());
