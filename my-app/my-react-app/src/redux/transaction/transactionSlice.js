@@ -33,7 +33,7 @@ const transactionSlice = createSlice(
                     if(state.list[i].id === id){
                         index = i;
                     }
-                }
+                } 
                 state.list[index] = transaction;
             })
             builder.addCase(deleteOneTransaction.fulfilled,(state, action)=>{
@@ -48,6 +48,7 @@ const transactionSlice = createSlice(
             })
             builder.addCase(addTransaction.fulfilled,(state, action)=>{
                 state.list.push(action.payload);
+                state.currentTransaction=action.payload
             })
         }
     }

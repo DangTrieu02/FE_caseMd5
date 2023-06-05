@@ -7,6 +7,7 @@ import { getAllCategory } from '../../services/categoryService';
 import { Field, Form, Formik } from 'formik';
 import { addTransaction, updateOneTransaction } from '../../services/transactionService';
 import { useParams } from 'react-router-dom';
+import { getOneWallet } from '../../services/walletService';
 
 
 function EditTransaction(props) {
@@ -23,7 +24,9 @@ function EditTransaction(props) {
     }, [])
 
     const onSubmit = (values) => {
-        dispatch(updateOneTransaction({  id: props.transaction.id , values }))
+        dispatch(updateOneTransaction({  id: props.transaction.id , values })).then(() => {
+            dispatch(getOneWallet(values.wallet))
+        })
     }
     let initialValues
     if (props !== undefined){

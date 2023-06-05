@@ -20,8 +20,9 @@ export default function EditCategory() {
 
     const submit = (values) => {
         values.icon = imageUrls
+        console.log(values)
         dispatch(updateCategory({id:id, values:values}))
-        navigate('/home/category')
+        setTimeout(()=> {navigate('/home/category')}, 500)
     }
 
     let category = useSelector(({ category }) => {

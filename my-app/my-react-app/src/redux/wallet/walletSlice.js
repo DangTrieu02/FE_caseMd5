@@ -11,6 +11,7 @@ import {
 const initialState = {
     list: [],
     chart:{},
+    total:0,
     currentWallet: {}
 }
 

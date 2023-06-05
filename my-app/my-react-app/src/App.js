@@ -10,6 +10,8 @@ import Update from './pages/wallet/update';
 import Transaction from './pages/transaction/transaction';
 import Category from './pages/category/category';
 import EditCategory from './pages/category/editCategory';
+import { LoginError } from './containers/loginError';
+import { LoginSuccess } from './containers/loginSuccess';
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
     <Routes>
     <Route path={'login'} element={<Login/>}/>
     <Route path={'register'} element={<Register/>}/>
+    <Route path={'auth/login/success'} element={<LoginSuccess/>}/>
+    <Route path={'auth/login/error'} element={<LoginError/>}/>
                 {
                     user ?
                         <>

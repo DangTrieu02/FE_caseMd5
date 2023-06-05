@@ -27,17 +27,14 @@ export function List() {
                                     <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         <Link to={`/home/wallet/${item.id}`}></Link>
                                     </div>
-                                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapsePages"
+                                    <a class="nav-link collapsed" data-toggle="collapse" 
                                         aria-expanded="true" aria-controls="collapsePages">
-                                        <span>Wallet : {item.name}</span>
-                                    </a>
-                                    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                                        <span><Link to={`/home/transaction/${item.id}`} >Wallet : {item.name}</Link></span>
                                         <div class="bg-white py-2 collapse-inner rounded">
-                                            <p class="collapse-item" ><Link to={`/home/transaction/${item.id}`} >See more</Link></p>
                                             <p class="collapse-item" ><Link to={`/home/updateWallet/${item.id}`}>update</Link></p>
                                             <p class="collapse-item" onClick={()=> {remove(item.id)}}>delete</p>
                                         </div>
-                                    </div>
+                                    </a>
                                     <div className="h5 mb-0 font-weight-bold text-gray-800">${item.total}</div>
                                 </div>
                                 <div className="col-auto">

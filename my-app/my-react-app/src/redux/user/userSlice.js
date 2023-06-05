@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import {createSlice} from "@reduxjs/toolkit";
-import {login, logout, register} from "../../services/userService";
+import {googleLogin, login, logout, register} from "../../services/userService";
 
 
 
@@ -28,6 +28,13 @@ const useSlice = createSlice({
         })
         builder.addCase(register.fulfilled, (state, action) => {
             state.currentRegister = action.payload;
+        })
+        builder.addCase(googleLogin.fulfilled, (state, action) => {
+            state.currentUser = action.payload;
+            console.log(action.payload,11111);
+            if(action.payload !== undefined){
+                localStorage.setItem('user', JSON.stringify(action.payload));
+            }
         })
     }
 })

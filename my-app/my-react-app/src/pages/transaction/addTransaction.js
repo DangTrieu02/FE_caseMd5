@@ -7,6 +7,7 @@ import { getAllCategory } from '../../services/categoryService';
 import { Field, Form, Formik } from 'formik';
 import { addTransaction } from '../../services/transactionService';
 import { useParams } from 'react-router-dom';
+import { getOneWallet } from '../../services/walletService';
 
 
 function Example() {
@@ -24,7 +25,8 @@ function Example() {
     }, [])
 
     const onSubmit = (values) => {
-        dispatch(addTransaction({id , values}))
+        dispatch(addTransaction({id , values})).then(() => dispatch(getOneWallet(id)))
+        handleClose()
     }
     const initialValues = {
         amount: '',
@@ -87,6 +89,7 @@ function Example() {
                                 </div>
                                 <div>
                                     <Field as="select" name="category" className="form-control form-control-user">
+                                            <option value="1">chosen category</option>
                                         {categories && categories.map((category) => (
                                             <option value={category && category.id}>{category && category.name}</option>
                                         ))}

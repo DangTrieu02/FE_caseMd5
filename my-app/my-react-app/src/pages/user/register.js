@@ -37,6 +37,14 @@ export default function Register() {
         });
 
     }
+
+    const googleAuth = () => {
+        window.open(
+            `http://localhost:3001/auth/google`,
+            "_self"
+        );
+    };
+    
     return (
         <>
         <center><h1>REGISTER</h1></center>
@@ -77,9 +85,9 @@ export default function Register() {
                                                 </div>
                                                 <button className="btn btn-primary btn-user btn-block" type={'submit'}>Register</button>
                                                 <hr />
-                                                <button className="btn btn-google btn-user btn-block">
-                                                    <i className="fab fa-google fa-fw"></i> Login with Google
-                                                </button>
+                                                <button className="btn btn-google btn-user btn-block" onClick={() => googleAuth()}>
+                                                        <i className="fab fa-google fa-fw"></i> Login with Google
+                                                    </button>
                                                 <a href="index.html" className="btn btn-facebook btn-user btn-block">
                                                     <i className="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                                 </a>

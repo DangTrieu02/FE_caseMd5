@@ -3,26 +3,36 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllCategory, removeCategory } from '../../services/categoryService'
 import AddCategory from './addCategory'
 import { Link } from 'react-router-dom'
+import swal from 'sweetalert';
+
 
 export default function Category() {
     const dispatch = useDispatch()
     const [deleteConfirmation, setDeleteConfirmation] = useState(false);
     const [deleteItemId, setDeleteItemId] = useState(null);
     const handleDelete = (id) => {
-        setDeleteConfirmation(true);
-        setDeleteItemId(id);
+        swal({
+            title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this imaginary file!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                dispatch(removeCategory())
+            swal("Poof! Your imaginary file has been deleted!", {
+                icon: "success",
+            })
+        } else {
+            swal("Your imaginary file is safe!");
+        }
+        });
     };
-    const handleCancelDelete = () => {
-        setDeleteConfirmation(false);
-        setDeleteItemId(null);
-    };
-    const handleConfirmDelete = () => {
-        dispatch(removeCategory(deleteItemId));
-
-        setDeleteConfirmation(false);
-        setDeleteItemId(null);
-    };
+   
+    
     const categories = useSelector(({ category }) => {
+        console.log(category);
         return category.list
     })
     useEffect(() => {
@@ -30,7 +40,7 @@ export default function Category() {
     }, [])
 
 
-
+    
 
 
     return (
@@ -60,20 +70,10 @@ export default function Category() {
                                     {categories && categories.map((item) => (
                                         <tr key={item.id}>
                                             <td >{item.name}</td>
-                                            <td><img style={{ width: 75, height: 75 }} src={item.icon} alt="icon"/></td>
+                                            <td><img style={{ width: 75, height: 75 }} src={item.icon} alt="icon" /></td>
                                             <td>{item.transactionType}</td>
                                             <td style={{ textAlign: "center" }}><Link to={`/home/category/${item.id}`}> Edit</Link> </td>
-
-                                            {deleteConfirmation ? (
-                                                <div>
-                                                    <p>Are you sure you want to delete?</p>
-                                                    <p>delete category also delete all transaction use this category ?</p>
-                                                    <button onClick={handleConfirmDelete}>Delete</button>
-                                                    <button onClick={handleCancelDelete}>Cancel</button>
-                                                </div>
-                                            ) : (
                                                 <td onClick={() => handleDelete(item.id)}>Delete</td>
-                                            )}
                                         </tr>
                                     ))}
                                 </tbody>

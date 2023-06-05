@@ -27,10 +27,10 @@ export const getOneTransaction = createAsyncThunk(
 export const addTransaction = createAsyncThunk(
     'transactions/addTransaction',
     async (data) => {
-        await customAPI().post(`transaction/${data.id}`,data.values)// id ví
-        let cate= await axios.get(`http://localhost:3001/category/one?id=${data.values.category}`)
-        data.values.category = cate.data
-        return data.values;
+        let newTrans= await customAPI().post(`transaction/${data.id}`,data.values)// id ví
+        let cate= await axios.get(`http://localhost:3001/category/one?id=${data.values.category}`) 
+        newTrans.data.category = cate.data
+        return  newTrans.data ;
     }
 )
 

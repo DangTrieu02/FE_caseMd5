@@ -21,3 +21,16 @@ export const register = createAsyncThunk(
                 const res = await axios.post('http://localhost:3001/auth/signup', user);
                 return res.data;
             })
+
+export const googleLogin = createAsyncThunk(
+    'user/googleLogin',
+    async () => {
+        try{
+            const res = await axios.get('http://localhost:3001/auth/login/success', {withCredentials: true})
+             console.log(1111,res.data)
+             return res.data;
+        }catch(e){
+                console.log(e)
+        }
+        
+    })
