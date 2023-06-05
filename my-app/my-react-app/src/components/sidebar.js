@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Category from '../pages/category/category'
 
 export function Sidebar() {
     return (
@@ -30,10 +31,10 @@ export function Sidebar() {
                 </div>
 
                 <li class="nav-item">
-                <Link to={""}>
+                <Link to={"/home/category"}>
                     <a class="nav-link">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Category</span></a>
+                        <span> Category</span></a>
                         </Link>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">

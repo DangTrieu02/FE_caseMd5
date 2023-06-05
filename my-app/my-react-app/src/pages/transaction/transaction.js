@@ -1,13 +1,26 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllTransaction } from '../../services/transactionService';
+import { deleteOneTransaction, getAllTransaction } from '../../services/transactionService';
 import { useParams } from 'react-router-dom';
+import Example from './addTransaction';
+import EditTransaction from './editTransaction';
 
 export default function Transaction() {
     const dispatch = useDispatch()
     const { id } = useParams()
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const removeTrans= (id) =>{
+        console.log(`removeTransaction`)
+        dispatch(deleteOneTransaction(id))
+    }
+
+
     const transaction = useSelector(({ transactions }) => {
-        return transactions
+        return transactions.list
     })
     useEffect(() => {
         dispatch(getAllTransaction(id))
@@ -17,6 +30,9 @@ export default function Transaction() {
         <>
             <div class="container-fluid">
                 <h1 class="h3 mb-2 text-gray-800">Transaction</h1>
+                <div style={{ display: 'flex', justifyContent: "flex-end" }}>
+                    <Example></Example>
+                </div>
                 <p class="mb-4"> All Wallet Transactions  </p>
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -32,16 +48,19 @@ export default function Transaction() {
                                         <th>Category</th>
                                         <th>Date</th>
                                         <th>Note</th>
+                                        <th style={{textAlign:"center"}} colSpan={2}>action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {transaction && transaction.list.map((item) => (
-                                        <tr>
-                                            <td>{item.category.transactionType}</td>
+                                    {transaction && transaction.map((item) => (
+                                        <tr key={item.id}>
+                                            <td>{item.category && item.category.transactionType}</td>
                                             <td>{item.amount} đ</td>
-                                            <td>{item.category.name}</td>
+                                            <td>{item.category && item.category.name}</td>
                                             <td>{item.date}</td>
                                             <td>{item.note}</td>
+                                            <EditTransaction transaction={item}></EditTransaction>
+                                            <td onClick={()=>removeTrans(item.id)} style={{textAlign:"center"}}>delete</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -49,7 +68,6 @@ export default function Transaction() {
                         </div>
                     </div>
                 </div>
-
             </div>
         </>
     )

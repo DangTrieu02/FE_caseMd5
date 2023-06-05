@@ -24,15 +24,15 @@ export const addCategory = createAsyncThunk(
 );
 export const updateCategory = createAsyncThunk(
     'category/updateCategory',
-    async (id,newCategory) => {
-        await axios.put(`http://localhost:3001/category?id=${id}`,newCategory)
-        return newCategory
+    async (data) => {
+        await axios.put(`http://localhost:3001/category?id=${data.id}`,data.values)
+        return {id:data.id,values:data.values}
     }
 );
 export const removeCategory = createAsyncThunk(
-    'category/addCategory',
+    'category/removeCategory',
     async (id) => {
-        await axios.post(`http://localhost:3001/category?id=${id}`)
+        await axios.delete(`http://localhost:3001/category?id=${id}`)
         return id
     }
 );

@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import customAPI from "./customAPI";
+import axios from "axios";
 
 export const getAllTransaction = createAsyncThunk(
     'transactions/getAllTransaction',
@@ -25,24 +26,29 @@ export const getOneTransaction = createAsyncThunk(
 
 export const addTransaction = createAsyncThunk(
     'transactions/addTransaction',
-    async (id) => {
-        let res = await customAPI().post(`wallet/transactions/${id}`)// id ví
-        return res.data;
+    async (data) => {
+        await customAPI().post(`transaction/${data.id}`,data.values)// id ví
+        let cate= await axios.get(`http://localhost:3001/category/one?id=${data.values.category}`)
+        data.values.category = cate.data
+        return data.values;
     }
 )
 
 export const updateOneTransaction = createAsyncThunk(
     'transactions/updateOneTransaction',
-    async (id, newTransaction) => {
-        let res = await customAPI().put(`wallet/transactions/${id}`)  // id transaction
-        return { id: id, newTransaction: newTransaction }
+    async (data) => {
+        console.log(data)
+        await customAPI().put(`transaction/${data.id}`,data.values)  // id transaction
+        let cate= await axios.get(`http://localhost:3001/category/one?id=${data.values.category}`)
+        data.values.category = cate.data
+        return { id: data.id, newTransaction: data.values }
     }
 )
 
 export const deleteOneTransaction = createAsyncThunk(
     'transactions/deleteOneTransaction',
     async (id) => {
-        let res = await customAPI.delete(`wallet/transactions/${id}`) // id transaction
+        await customAPI().delete(`transaction/${id}`) // id transaction
         return id;
     }
 )
